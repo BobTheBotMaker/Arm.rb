@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ffi (1.9.3)
+    phidgets-ffi (0.1.2)
+      ffi (>= 1.0.9)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  ffi (~> 1.9.3)
+  phidgets-ffi (~> 0.1.2)

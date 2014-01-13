@@ -1,0 +1,180 @@
+# Logfile created on 2014-01-12 20:31:08 -0500 by logger.rb/44203
+I, [2014-01-12T20:31:08.578651 #85732]  INFO -- : 0:  ffi (1.9.3) from /Users/andre/.rvm/gems/ruby-2.1.0@phidgets-arm/specifications/ffi-1.9.3.gemspec
+E, [2014-01-12T20:31:11.310966 #85732] ERROR -- : Gem::Ext::BuildError: ERROR: Failed to build gem native extension.
+
+    /Users/andre/.rvm/rubies/ruby-2.1.0/bin/ruby extconf.rb
+checking for phidget21.h in /Library/Frameworks/Phidget21.framework/Headers... yes
+checking for CPhidget_getLibraryVersion() in -llibphidget21... no
+checking for Phidget21... yes
+checking for main() in -lphidget21... no
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling phidgets.c
+phidgets.c:24:54: error: use of undeclared identifier 'PHIDCLASS_ANALOG'
+  rb_define_const(ph_module, "CLASS_ANALOG", INT2FIX(PHIDCLASS_ANALOG));
+                                                     ^
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+phidgets.c:25:54: error: use of undeclared identifier 'PHIDCLASS_BRIDGE'; did you mean 'PHIDCLASS_RFID'?
+  rb_define_const(ph_module, "CLASS_BRIDGE", INT2FIX(PHIDCLASS_BRIDGE));
+                                                     ^~~~~~~~~~~~~~~~
+                                                     PHIDCLASS_RFID
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+/Library/Frameworks/Phidget21.framework/Headers/phidget21.h:23:2: note: 'PHIDCLASS_RFID' declared here
+ PHIDCLASS_RFID,
+ ^
+phidgets.c:27:64: error: use of undeclared identifier 'PHIDCLASS_FREQUENCYCOUNTER'
+  rb_define_const(ph_module, "CLASS_FREQUENCYCOUNTER", INT2FIX(PHIDCLASS_FREQUENCYCOUNTER));
+                                                               ^
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+phidgets.c:30:50: error: use of undeclared identifier 'PHIDCLASS_IR'
+  rb_define_const(ph_module, "CLASS_IR", INT2FIX(PHIDCLASS_IR));
+                                                 ^
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+phidgets.c:36:55: error: use of undeclared identifier 'PHIDCLASS_SPATIAL'
+  rb_define_const(ph_module, "CLASS_SPATIAL", INT2FIX(PHIDCLASS_SPATIAL));
+                                                      ^
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+phidgets.c:46:59: error: use of undeclared identifier 'PHIDID_ANALOG_4OUTPUT'; did you mean 'PHIDID_RFID_2OUTPUT'?
+  rb_define_const(ph_module, "ID_ANALOG_4OUTPUT", INT2FIX(PHIDID_ANALOG_4OUTPUT));
+                                                          ^~~~~~~~~~~~~~~~~~~~~
+                                                          PHIDID_RFID_2OUTPUT
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+/Library/Frameworks/Phidget21.framework/Headers/phidget21.h:48:2: note: 'PHIDID_RFID_2OUTPUT' declared here
+ PHIDID_RFID_2OUTPUT = 0x031,
+ ^
+phidgets.c:48:58: error: use of undeclared identifier 'PHIDID_BRIDGE_4INPUT'
+  rb_define_const(ph_module, "ID_BRIDGE_4INPUT", INT2FIX(PHIDID_BRIDGE_4INPUT));
+                                                         ^
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+phidgets.c:51:71: error: use of undeclared identifier 'PHIDID_ENCODER_HS_4ENCODER_4INPUT'; did you mean 'PHIDID_ENCODER_1ENCODER_1INPUT'?
+  rb_define_const(ph_module, "ID_ENCODER_HS_4ENCODER_4INPUT", INT2FIX(PHIDID_ENCODER_HS_4ENCODER_4INPUT));
+                                                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                                      PHIDID_ENCODER_1ENCODER_1INPUT
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+/Library/Frameworks/Phidget21.framework/Headers/phidget21.h:36:2: note: 'PHIDID_ENCODER_1ENCODER_1INPUT' declared here
+ PHIDID_ENCODER_1ENCODER_1INPUT = 0x04B,
+ ^
+phidgets.c:52:68: error: use of undeclared identifier 'PHIDID_FREQUENCYCOUNTER_2INPUT'
+  rb_define_const(ph_module, "ID_FREQUENCYCOUNTER_2INPUT", INT2FIX(PHIDID_FREQUENCYCOUNTER_2INPUT));
+                                                                   ^
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+phidgets.c:53:48: error: use of undeclared identifier 'PHIDID_GPS'
+  rb_define_const(ph_module, "ID_GPS", INT2FIX(PHIDID_GPS));
+                                               ^
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+phidgets.c:57:63: error: use of undeclared identifier 'PHIDID_INTERFACEKIT_2_2_2'
+  rb_define_const(ph_module, "ID_INTERFACEKIT_2_2_2", INT2FIX(PHIDID_INTERFACEKIT_2_2_2));
+                                                              ^
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+phidgets.c:60:47: error: use of undeclared identifier 'PHIDID_IR'; did you mean 'PHIDID_RFID'?
+  rb_define_const(ph_module, "ID_IR", INT2FIX(PHIDID_IR));
+                                              ^~~~~~~~~
+                                              PHIDID_RFID
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+/Library/Frameworks/Phidget21.framework/Headers/phidget21.h:57:2: note: 'PHIDID_RFID' declared here
+ PHIDID_RFID = 0x030,
+ ^
+phidgets.c:61:55: error: use of undeclared identifier 'PHIDID_LED_64_ADV'; did you mean 'PHIDID_LED_64'?
+  rb_define_const(ph_module, "ID_LED_64_ADV", INT2FIX(PHIDID_LED_64_ADV));
+                                                      ^~~~~~~~~~~~~~~~~
+                                                      PHIDID_LED_64
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+/Library/Frameworks/Phidget21.framework/Headers/phidget21.h:43:2: note: 'PHIDID_LED_64' declared here
+ PHIDID_LED_64 = 0x04A,
+ ^
+phidgets.c:63:64: error: use of undeclared identifier 'PHIDID_MOTORCONTROL_1MOTOR'; did you mean 'PHIDID_MOTORCONTROL_HC_2MOTOR'?
+  rb_define_const(ph_module, "ID_MOTORCONTROL_1MOTOR", INT2FIX(PHIDID_MOTORCONTROL_1MOTOR));
+                                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                               PHIDID_MOTORCONTROL_HC_2MOTOR
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+/Library/Frameworks/Phidget21.framework/Headers/phidget21.h:45:2: note: 'PHIDID_MOTORCONTROL_HC_2MOTOR' declared here
+ PHIDID_MOTORCONTROL_HC_2MOTOR = 0x059,
+ ^
+phidgets.c:66:68: error: use of undeclared identifier 'PHIDID_RFID_2OUTPUT_READ_WRITE'
+  rb_define_const(ph_module, "ID_RFID_2OUTPUT_READ_WRITE", INT2FIX(PHIDID_RFID_2OUTPUT_READ_WRITE));
+                                                                   ^
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+phidgets.c:68:64: error: use of undeclared identifier 'PHIDID_SPATIAL_ACCEL_3AXIS'
+  rb_define_const(ph_module, "ID_SPATIAL_ACCEL_3AXIS", INT2FIX(PHIDID_SPATIAL_ACCEL_3AXIS));
+                                                               ^
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+phidgets.c:69:71: error: use of undeclared identifier 'PHIDID_SPATIAL_ACCEL_GYRO_COMPASS'
+  rb_define_const(ph_module, "ID_SPATIAL_ACCEL_GYRO_COMPASS", INT2FIX(PHIDID_SPATIAL_ACCEL_GYRO_COMPASS));
+                                                                      ^
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+phidgets.c:71:64: error: use of undeclared identifier 'PHIDID_TEMPERATURESENSOR_4'; did you mean 'PHIDID_TEMPERATURESENSOR'?
+  rb_define_const(ph_module, "ID_TEMPERATURESENSOR_4", INT2FIX(PHIDID_TEMPERATURESENSOR_4));
+                                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                               PHIDID_TEMPERATURESENSOR
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+/Library/Frameworks/Phidget21.framework/Headers/phidget21.h:51:2: note: 'PHIDID_TEMPERATURESENSOR' declared here
+ PHIDID_TEMPERATURESENSOR = 0x070,
+ ^
+phidgets.c:72:65: error: use of undeclared identifier 'PHIDID_TEMPERATURESENSOR_IR'; did you mean 'PHIDID_TEMPERATURESENSOR'?
+  rb_define_const(ph_module, "ID_TEMPERATURESENSOR_IR", INT2FIX(PHIDID_TEMPERATURESENSOR_IR));
+                                                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                                PHIDID_TEMPERATURESENSOR
+/Users/andre/.rvm/rubies/ruby-2.1.0/include/ruby-2.1.0/ruby/ruby.h:231:45: note: expanded from macro 'INT2FIX'
+#define INT2FIX(i) ((VALUE)(((SIGNED_VALUE)(i))<<1 | FIXNUM_FLAG))
+                                            ^
+/Library/Frameworks/Phidget21.framework/Headers/phidget21.h:51:2: note: 'PHIDID_TEMPERATURESENSOR' declared here
+ PHIDID_TEMPERATURESENSOR = 0x070,
+ ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make: *** [phidgets.o] Error 1
+
+make failed, exit code 2
+
+Gem files will remain installed in /Users/andre/.rvm/gems/ruby-2.1.0@phidgets-arm/gems/phidgets-0.1.2 for inspection.
+Results logged to /Users/andre/.rvm/gems/ruby-2.1.0@phidgets-arm/extensions/x86_64-darwin-11/2.1.0/phidgets-0.1.2/gem_make.out
+
+/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/site_ruby/2.1.0/rubygems/ext/builder.rb:89:in `run'  \n/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/site_ruby/2.1.0/rubygems/ext/builder.rb:51:in `block in make'  \n/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/site_ruby/2.1.0/rubygems/ext/builder.rb:43:in `each'  \n/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/site_ruby/2.1.0/rubygems/ext/builder.rb:43:in `make'  \n/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/site_ruby/2.1.0/rubygems/ext/ext_conf_builder.rb:43:in `block in build'  \n/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/tempfile.rb:324:in `open'  \n/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/site_ruby/2.1.0/rubygems/ext/ext_conf_builder.rb:17:in `build'  \n/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/site_ruby/2.1.0/rubygems/ext/builder.rb:161:in `block (2 levels) in build_extension'  \n/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/site_ruby/2.1.0/rubygems/ext/builder.rb:160:in `chdir'  \n/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/site_ruby/2.1.0/rubygems/ext/builder.rb:160:in `block in build_extension'  \n/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/site_ruby/2.1.0/rubygems/ext/builder.rb:159:in `synchronize'  \n/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/site_ruby/2.1.0/rubygems/ext/builder.rb:159:in `build_extension'  \n/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/site_ruby/2.1.0/rubygems/ext/builder.rb:198:in `block in build_extensions'  \n/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/site_ruby/2.1.0/rubygems/ext/builder.rb:195:in `each'  \n/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/site_ruby/2.1.0/rubygems/ext/builder.rb:195:in `build_extensions'  \n/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/site_ruby/2.1.0/rubygems/installer.rb:677:in `build_extensions'  \n/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/site_ruby/2.1.0/rubygems/installer.rb:232:in `install'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/lib/bundler/source/rubygems.rb:101:in `block in install'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/lib/bundler/rubygems_integration.rb:118:in `preserve_paths'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/lib/bundler/source/rubygems.rb:94:in `install'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/lib/bundler/installer.rb:111:in `block in install_gem_from_spec'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/lib/bundler/rubygems_integration.rb:150:in `with_build_args'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/lib/bundler/installer.rb:110:in `install_gem_from_spec'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/lib/bundler/installer.rb:295:in `block in install_sequentially'  \n/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/forwardable.rb:183:in `each'  \n/Users/andre/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/forwardable.rb:183:in `each'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/lib/bundler/installer.rb:294:in `install_sequentially'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/lib/bundler/installer.rb:97:in `run'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/lib/bundler/installer.rb:15:in `install'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/lib/bundler/cli.rb:257:in `install'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/lib/bundler/vendor/thor/command.rb:27:in `run'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/lib/bundler/vendor/thor/invocation.rb:120:in `invoke_command'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/lib/bundler/vendor/thor.rb:363:in `dispatch'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/lib/bundler/vendor/thor/base.rb:438:in `start'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/lib/bundler/cli.rb:10:in `start'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/bin/bundle:22:in `block in <top (required)>'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/lib/bundler/friendly_errors.rb:5:in `with_friendly_errors'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/gems/bundler-1.5.1/bin/bundle:22:in `<top (required)>'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/bin/bundle:23:in `load'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/bin/bundle:23:in `<main>'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/bin/ruby_executable_hooks:15:in `eval'  \n/Users/andre/.rvm/gems/ruby-2.1.0@global/bin/ruby_executable_hooks:15:in `<main>'
+I, [2014-01-12T20:34:57.604528 #86221]  INFO -- : 0:  ffi (1.9.3) from /Users/andre/.rvm/gems/ruby-2.1.0@phidgets-arm/specifications/ffi-1.9.3.gemspec
+I, [2014-01-12T20:34:58.715107 #86221]  INFO -- : 0:  phidgets-ffi (0.1.2) from /Users/andre/.rvm/gems/ruby-2.1.0@phidgets-arm/specifications/phidgets-ffi-0.1.2.gemspec
+I, [2014-01-12T20:34:58.715604 #86221]  INFO -- : 0:  bundler (1.5.1) from /Users/andre/.rvm/gems/ruby-2.1.0@global/specifications/bundler-1.5.1.gemspec
+I, [2014-01-12T21:24:55.833837 #87622]  INFO -- : 0:  ffi (1.9.3) from /Users/andre/.rvm/gems/ruby-2.1.0@phidgets-arm/specifications/ffi-1.9.3.gemspec
+I, [2014-01-12T21:24:55.834377 #87622]  INFO -- : 0:  phidgets-ffi (0.1.2) from /Users/andre/.rvm/gems/ruby-2.1.0@phidgets-arm/specifications/phidgets-ffi-0.1.2.gemspec
+I, [2014-01-12T21:24:55.834786 #87622]  INFO -- : 0:  bundler (1.5.1) from /Users/andre/.rvm/gems/ruby-2.1.0@global/specifications/bundler-1.5.1.gemspec
+I, [2014-01-12T21:38:40.822705 #90429]  INFO -- : 0:  ffi (1.9.3) from /Users/andre/.rvm/gems/ruby-2.1.0/specifications/ffi-1.9.3.gemspec
+I, [2014-01-12T21:38:41.775578 #90429]  INFO -- : 0:  phidgets-ffi (0.1.2) from /Users/andre/.rvm/gems/ruby-2.1.0/specifications/phidgets-ffi-0.1.2.gemspec
+I, [2014-01-12T21:38:41.776084 #90429]  INFO -- : 0:  bundler (1.5.1) from /Users/andre/.rvm/gems/ruby-2.1.0@global/specifications/bundler-1.5.1.gemspec
