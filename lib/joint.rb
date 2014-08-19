@@ -1,3 +1,6 @@
 class Joint
-  # To change this template use File | Settings | File Templates.
+  def initialize(port, range)
+    @port = port
+    @range = range
+  end
 end
