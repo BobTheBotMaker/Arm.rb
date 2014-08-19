@@ -1,5 +1,3 @@
-require 'rubygems'
-require 'phidgets-ffi'
 
 puts "Library Version: #{Phidgets::FFI.library_version}"
 
