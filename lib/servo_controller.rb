@@ -7,12 +7,8 @@ class ServoController
 
   def initialize
     @controller = Phidgets::AdvancedServo.new
+    setup_error_handler
     do_attach
-
-    until @controller.attached?
-      logger.info 'Waiting'
-      sleep 10
-    end
   end
 
   def do_shutdown
