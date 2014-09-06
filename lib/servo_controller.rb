@@ -24,6 +24,62 @@ class ServoController
       logger.info "Version: #{device.version}"
       logger.info "# Servos: #{device.advanced_servos.size}"
     end
+
+    until @controller.attached?
+      logger.info 'Waiting'
+      sleep 1
+    end
+
+  end
+
+  def setup_error_handler
+    @controller.on_error do |device, obj, code, description|
+      logger.info "Error #{code}: #{description}"
+    end
+  end
+
+  def initialize_servo(servo, options)
+    set_acceleration(servo, options[:acceleration])
+    @controller.advanced_servos[servo].position_max = options[:position_max]
+    @controller.advanced_servos[servo].position_min = options[:position_min]
+    @controller.advanced_servos[servo].speed_ramping = options[:ramping]
+    @controller.advanced_servos[servo].type = options[:type]
+    engage_servo(servo)
+  end
+
+  def get_position(servo)
+    position = -1
+    while position < 0
+      begin
+        position = @controller.advanced_servos[servo].position
+      rescue Phidgets::Error::UnknownVal => e
+        logger.info "Waiting on Servo #{servo} position"
+        sleep 1
+        next
+      end
+    end
+    logger.info "Server #{servo} position is #{position}"
+    position
+  end
+
+  def move_to(servo, position)
+    @controller.advanced_servos[servo].position = position
+  end
+
+  def set_acceleration(servo, acceleration)
+    @controller.advanced_servos[servo].acceleration = acceleration
+  end
+
+  def engaged?(servo)
+    @controller.advanced_servos[servo].engaged
+  end
+
+  def engage_servo(servo)
+    @controller.advanced_servos[servo].engaged = true
+  end
+
+  def disengage_servo(servo)
+    @controller.advanced_servos[servo].engaged = false
   end
 
 end
