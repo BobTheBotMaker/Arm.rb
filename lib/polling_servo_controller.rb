@@ -12,7 +12,7 @@ class PollingServoController
 
   def move_to(servo, position)
     @servo_controller.move_to(servo, position)
-    until within_tolerance(position, @servo_controller.get_position(servo), 0.01)
+    until within_tolerance(position, get_position(servo), 0.01)
       sleep 1
     end
   end
@@ -27,6 +27,10 @@ class PollingServoController
   def within_tolerance(required, actual, tolerance)
     difference = required - actual
     difference.abs < tolerance
+  end
+
+  def get_position(servo)
+    @servo_controller.get_position(servo)
   end
 
 end

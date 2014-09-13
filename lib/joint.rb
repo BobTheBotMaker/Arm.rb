@@ -20,6 +20,10 @@ class Joint
     @controller.move_to(@port, position)
   end
 
+  def position
+    @controller.get_position(@port)
+  end
+
   def disengage
     @controller.disengage_servo(@port)
   end
