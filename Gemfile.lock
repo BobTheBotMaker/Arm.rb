@@ -1,62 +1,18 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    artoo (1.8.0)
-      celluloid (>= 0.16.0.pre)
-      celluloid-io (>= 0.16.0.pre)
-      http (~> 0.6.1)
-      multi_json (~> 1.10.1)
-      pry (~> 0.9.0)
-      rake
-      reel (~> 0.5.0)
-      robeaux (= 0.2.0)
-      thor (~> 0.19.1)
-    artoo-joystick (0.4.0)
-      artoo (>= 1.6.0)
-      hybridgroup-ruby-sdl-ffi
-    celluloid (0.16.0)
-      timers (~> 4.0.0)
-    celluloid-io (0.16.0)
-      celluloid (>= 0.16.0)
-      nio4r (>= 1.0.0)
-    coderay (1.1.0)
     ffi (1.9.3)
-    hitimes (1.2.2)
-    http (0.6.2)
-      http_parser.rb (~> 0.6.0)
-    http_parser.rb (0.6.0)
     hybridgroup-ruby-sdl-ffi (0.4.2)
       nice-ffi
-    method_source (0.8.2)
-    multi_json (1.10.1)
     nice-ffi (0.4)
       ffi (>= 0.5.0)
-    nio4r (1.0.1)
     phidgets-ffi (0.1.2)
       ffi (>= 1.0.9)
-    pry (0.9.12.6)
-      coderay (~> 1.0)
-      method_source (~> 0.8)
-      slop (~> 3.4)
-    rake (10.3.2)
-    reel (0.5.0)
-      celluloid (>= 0.15.1)
-      celluloid-io (>= 0.15.0)
-      http (>= 0.6.0.pre)
-      http_parser.rb (>= 0.6.0)
-      websocket_parser (>= 0.1.6)
-    robeaux (0.2.0)
-    slop (3.6.0)
-    thor (0.19.1)
-    timers (4.0.0)
-      hitimes
-    websocket_parser (0.1.6)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  artoo (~> 1.8.0)
-  artoo-joystick (~> 0.4.0)
   ffi (~> 1.9.3)
+  hybridgroup-ruby-sdl-ffi
   phidgets-ffi (~> 0.1.2)
