@@ -1,11 +1,17 @@
 require_relative 'joystick_state'
 
 module JoystickController
+
   class Controller
     def initialize(joystick, controller_map)
       @joystick = joystick
       @controller_map = controller_map
       @joystick_state = JoystickState.new
+      @event_callbacks = {}
+    end
+
+    def on(event, action)
+      @event_callbacks[event] = action
     end
 
     def update_buttons
@@ -21,19 +27,18 @@ module JoystickController
       axis_map.each do | stick |
         axis_map[stick].each do |axis, name|
           val = @joystick.axis(axis)
-          @joystick_state.update_axis(stick, name, val)
+          if @joystick_state.update_axis(stick, name, val)
+            @event_callbacks[]
+          end
         end
       end
     end
 
     def poll
       while true
-        @joystick.update
-        update_axes
-        update_buttons
-
+        update
       end
     end
-
   end
+
 end
