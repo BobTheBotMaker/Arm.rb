@@ -1,6 +1,6 @@
-require './lib/servo_controller'
-require './lib/polling_servo_controller'
-require './lib/joint'
+require './lib/servo_controller/servo_controller'
+require './lib/servo_controller/polling_servo_controller'
+require './lib/joint/joint'
 require 'ruby-sdl-ffi'
 
 #sc = ServoController.new
