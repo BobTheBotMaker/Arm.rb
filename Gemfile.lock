@@ -4,6 +4,7 @@ GEM
     ffi (1.9.3)
     hybridgroup-ruby-sdl-ffi (0.4.2)
       nice-ffi
+    minitest (5.4.1)
     nice-ffi (0.4)
       ffi (>= 0.5.0)
     phidgets-ffi (0.1.2)
@@ -15,4 +16,5 @@ PLATFORMS
 DEPENDENCIES
   ffi (~> 1.9.3)
   hybridgroup-ruby-sdl-ffi
+  minitest (~> 5.4.1)
   phidgets-ffi (~> 0.1.2)
