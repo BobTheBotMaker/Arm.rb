@@ -1,27 +1,28 @@
 module JoystickController
 
-  class JoystickAxis
-    def initialize(axis, value)
-      @stick[axis] = value
-    end
-  end
-
   class JoystickState
     def initialize
       @buttons = {}
-      @axes = {}
+      @sticks = {}
     end
 
-    def update_button(button, state)
-      if @buttons[button] != state
-        @buttons[button] = state
+    def update_button(button, value)
+      changed = false
+      if @buttons[button].state != state
+        changed = true
       end
-
+      @buttons[button] = value
+      changed
     end
 
     def update_axis(stick, axis, value)
-      @axes[stick] = new JoystickAxis(axis, value)
+      changed = false
+      if  @sticks[stick][axis].value != value
+        changed = true
+      end
+      @sticks[stick][axis] = value
+      changed
     end
-
   end
+
 end
