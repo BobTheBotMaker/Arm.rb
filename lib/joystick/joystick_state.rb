@@ -7,12 +7,7 @@ module JoystickController
     end
 
     def update_button(button, value)
-      changed = false
-      if @buttons[button].state != state
-        changed = true
-      end
       @buttons[button] = value
-      changed
     end
 
     def update_axis(stick, axis, value)
