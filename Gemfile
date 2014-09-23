@@ -8,3 +8,4 @@ gem 'phidgets-ffi', '~> 0.1.2'
 gem 'hybridgroup-ruby-sdl-ffi'
 
 gem 'minitest', '~> 5.4.1'
+gem 'mocha',  '~> 1.1.0'

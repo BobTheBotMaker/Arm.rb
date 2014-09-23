@@ -3,10 +3,10 @@ require_relative 'joystick_state'
 module JoystickController
 
   class Controller
-    def initialize(joystick, controller_map)
+    def initialize(joystick, state, controller_map)
       @joystick = joystick
       @controller_map = controller_map
-      @joystick_state = JoystickState.new
+      @joystick_state = state
       @event_callbacks = {}
     end
 
