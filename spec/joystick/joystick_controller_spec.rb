@@ -1,6 +1,4 @@
-require_relative '../../lib/joystick/joystick_controller'
-require_relative '../../lib/joystick/ps3_controller_map'
-require_relative '../../lib/joystick/joystick_state'
+require_relative '../../lib/joystick/joystick'
 require 'minitest/autorun'
 require 'mocha/mini_test'
 

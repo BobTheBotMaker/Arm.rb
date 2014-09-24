@@ -1,3 +1,4 @@
+require './lib/joystick/joystick'
 require './lib/servo_controller/servo_controller'
 require './lib/servo_controller/polling_servo_controller'
 require './lib/joint/joint'
