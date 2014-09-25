@@ -5,21 +5,22 @@ require 'mocha/mini_test'
 describe JoystickController do
   before do
     @joystick = mock()
-    @joystick_state = JoystickController::JoystickState.new
-    @joystick_controller = JoystickController::Controller.new(@joystick, @joystick_state, JoystickController::PS3_CONTROLLER_MAP)
+    @receiver = mock()
+    @joystick_controller = JoystickController::Controller.new(@joystick, JoystickController::PS3_CONTROLLER_MAP)
   end
 
   describe '#update_buttons' do
     it 'should register the select button down' do
-      @joystick.stubs(:button)
-      @joystick.stubs(:button).with(0).returns(1).once()
+      @joystick.stubs(:button).with(0).returns(1).then.with(anything).returns(0)
+      @receiver.expects(:select_button).with(1).once()
+      @joystick_controller.on(:select, lambda {|val| @receiver.select_button(val)})
       @joystick_controller.update_buttons
-      @joystick_state.
     end
 
     it 'should register the select button up' do
-      @joystick.stubs(:button)
-      @joystick.stubs(:button).with(0).returns(0).once()
+      @joystick.stubs(:button).with(0).returns(0).then().with(anything).returns(0)
+      @receiver.expects(:select_button).with(0).once()
+      @joystick_controller.on(:select, lambda {|val| @receiver.select_button(val)})
       @joystick_controller.update_buttons
     end
 
