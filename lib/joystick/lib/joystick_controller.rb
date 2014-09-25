@@ -3,11 +3,11 @@ require_relative 'joystick_state'
 module JoystickController
 
   class Controller
-    def initialize(joystick, state, controller_map)
+    def initialize(joystick, controller_map)
       @joystick = joystick
       @controller_map = controller_map
-      @joystick_state = state
       @event_callbacks = {}
+      @button_state = {}
     end
 
     def on(event, action)
@@ -18,7 +18,10 @@ module JoystickController
       button_map = @controller_map[:buttons]
       button_map.each do |button, name|
         val = @joystick.button(button)
-        @joystick_state.update_button(name, val)
+        @button_state[name] = val
+        if @event_callbacks.has_key?(name)
+          @event_callbacks[name].call(val)
+        end
       end
     end
 

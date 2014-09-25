@@ -6,10 +6,8 @@ require 'ruby-sdl-ffi'
 
 servo_controller = ServoController.new
 polling_servo_controller = PollingServoController.new(servo_controller)
-
-joystick_state = JoystickController::JoystickState.new
 joystick_hw = JoystickController::Joystick.new(0)
-joystick_controller = JoystickController::Controller.new(joystick_hw, joystick_state, JoystickController::PS3_CONTROLLER_MAP)
+joystick_controller = JoystickController::Controller.new(joystick_hw, JoystickController::PS3_CONTROLLER_MAP)
 
 servo_arm = ServoArm.new(polling_servo_controller, joystick_controller)
 servo_arm.run
