@@ -14,8 +14,7 @@ module JoystickController
     def update_buttons
       button_map = @controller_map[:buttons]
       button_map.each do |button, name|
-        val = @joystick.button(button)
-        @button_state[name] = val
+        value = @joystick.button(button)
         if @event_callbacks.has_key?(name)
           @event_callbacks[name].call(val)
         end
