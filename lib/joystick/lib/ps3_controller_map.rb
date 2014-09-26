@@ -1,34 +1,34 @@
 # Based on https://github.com/hybridgroup/artoo-joystick/blob/master/lib/artoo/drivers/macosx_binding_map.rb
 module JoystickController
   PS3_CONTROLLER_MAP = {
-      :buttons => {
-          0 => :select,
-          1 => :j0,
-          2 => :j1,
-          3 => :start,
-          4 => :dpad_up,
-          5 => :dpad_right,
-          6 => :dpad_down,
-          7 => :dpad_left,
-          8 => :l2,
-          9 => :r2,
-          10 => :l1,
-          11 => :r1,
-          12 => :triangle,
-          13 => :circle,
-          14 => :x,
-          15 => :square,
-          16 => :ps3
+    :buttons => {
+      0 => :select,
+      1 => :z0,
+      2 => :z1,
+      3 => :start,
+      4 => :up,
+      5 => :right,
+      6 => :down,
+      7 => :left,
+      8 => :left2,
+      9 => :right2,
+      10 => :left1,
+      11 => :right1,
+      12 => :triangle,
+      13 => :circle,
+      14 => :x,
+      15 => :square,
+      16 => :ps3
+    },
+    :joysticks => {
+      :j0 => {
+        :x => 0,
+        :y => 1
       },
-      :joysticks => {
-          0 => {
-              0 => :x,
-              1 => :y
-          },
-          1 => {
-              2 => :x,
-              3 => :y
-          }
+      :j1 => {
+        :x => 2,
+        :y => 3
       }
+    }
   }
 end

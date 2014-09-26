@@ -16,19 +16,18 @@ module JoystickController
       button_map.each do |button, name|
         value = @joystick.button(button)
         if @event_callbacks.has_key?(name)
-          @event_callbacks[name].call(val)
+          @event_callbacks[name].call({button: name, value: value})
         end
       end
     end
 
     def update_axes
-      axis_map = @controller_map[:joysticks]
-      axis_map.each do | stick |
-        axis_map[stick].each do |axis, name|
-          val = @joystick.axis(axis)
-          if @joystick_state.update_axis(stick, name, val)
-            @event_callbacks[]
-          end
+      sticks = @controller_map[:joysticks]
+      sticks.each do | stick, axes |
+        x = @joystick.axis(axes[:x])
+        y = @joystick.axis(axes[:y])
+        if @event_callbacks.has_key?(stick)
+          @event_callbacks[stick].call({stick: stick, x: x, y: y})
         end
       end
     end
