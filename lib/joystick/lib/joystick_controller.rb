@@ -1,5 +1,3 @@
-require_relative 'joystick_state'
-
 module JoystickController
 
   class Controller
@@ -7,7 +5,6 @@ module JoystickController
       @joystick = joystick
       @controller_map = controller_map
       @event_callbacks = {}
-      @button_state = {}
     end
 
     def on(event, action)
