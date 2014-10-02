@@ -16,51 +16,51 @@ module JoystickController
     end
 
     def disconnect
-      SDL::JoystickClose(@joystick)
+      SDL.JoystickClose(@joystick)
     end
 
     def firmware_name
-      SDL::JoystickName(@index)
+      SDL.JoystickName(@index)
     end
 
     def update
-      SDL::JoystickUpdate
+      SDL.JoystickUpdate
     end
 
     def num_joysticks
-      SDL::NumJoysticks
+      SDL.NumJoysticks
     end
 
     def num_axes
-      SDL::JoystickNumAxes(@joystick)
+      SDL.JoystickNumAxes(@joystick)
     end
 
     def axis(n)
-      SDL::JoystickGetAxis(@joystick, n)
+      SDL.JoystickGetAxis(@joystick, n)
     end
 
     def num_balls
-      SDL::JoystickNumBalls(@joystick)
+      SDL.JoystickNumBalls(@joystick)
     end
 
     def ball(n)
-      SDL::JoystickGetBall(@joystick, n)
+      SDL.JoystickGetBall(@joystick, n)
     end
 
     def num_hats
-      SDL::JoystickNumHats(@joystick)
+      SDL.JoystickNumHats(@joystick)
     end
 
     def hat(n)
-      SDL::JoystickGetHat(@joystick, n)
+      SDL.JoystickGetHat(@joystick, n)
     end
 
     def num_buttons
-      SDL::JoystickNumButtons(@joystick)
+      SDL.JoystickNumButtons(@joystick)
     end
 
     def button(n)
-      SDL::JoystickGetButton(@joystick, n)
+      SDL.JoystickGetButton(@joystick, n)
     end
   end
 end
