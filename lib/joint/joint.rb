@@ -1,5 +1,3 @@
-require_relative 'servo_controller'
-
 class Joint
   include Logging
 

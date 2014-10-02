@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'phidgets-ffi'
-require_relative 'my_logger'
+require_relative '../util/my_logger'
 
 class ServoController
   include Logging
