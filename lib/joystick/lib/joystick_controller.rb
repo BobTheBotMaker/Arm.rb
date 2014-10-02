@@ -22,6 +22,7 @@ module JoystickController
     end
 
     def update_axes
+      @joystick.update
       sticks = @controller_map[:joysticks]
       sticks.each do | stick, axes |
         x = @joystick.axis(axes[:x])
