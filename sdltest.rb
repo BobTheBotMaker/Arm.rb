@@ -1,9 +1,11 @@
 require 'ruby-sdl-ffi'
 
-SDL.Init(SDL::INIT_JOYSTICK | SDL::INIT_EVENTTHREAD)
-SDL.JoystickEventState(SDL::ENABLE)
+SDL.Init(SDL::INIT_JOYSTICK)
+#SDL.Init(SDL::INIT_JOYSTICK | SDL::INIT_EVENTTHREAD)
+#SDL.JoystickEventState(SDL::ENABLE)
 stick = SDL.JoystickOpen(0)
 puts "Name #{SDL.JoystickName(0)}"
+sleep 100
 
 def map(x)
   in_min = -32768.to_f
