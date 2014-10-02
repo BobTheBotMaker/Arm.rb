@@ -2,11 +2,16 @@ require './lib/joystick/joystick'
 require './lib/servo_controller/servo_controller'
 require './lib/servo_controller/polling_servo_controller'
 require './lib/joint/joint'
+require './lib/servo_arm'
 require 'ruby-sdl-ffi'
 
 servo_controller = ServoController.new
 polling_servo_controller = PollingServoController.new(servo_controller)
 joystick_hw = JoystickController::SDLJoystick.new(0)
+joystick_hw.connect
+
+puts "Found Joystick: #{joystick_hw.firmware_name}"
+
 joystick_controller = JoystickController::Controller.new(joystick_hw, JoystickController::PS3_CONTROLLER_MAP)
 
 servo_arm = ServoArm.new(polling_servo_controller, joystick_controller)
