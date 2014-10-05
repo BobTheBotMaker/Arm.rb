@@ -7,6 +7,7 @@ require 'ruby-sdl-ffi'
 
 servo_controller = ServoController.new
 polling_servo_controller = PollingServoController.new(servo_controller)
+
 joystick_hw = JoystickController::SDLJoystick.new(0)
 joystick_hw.connect
 

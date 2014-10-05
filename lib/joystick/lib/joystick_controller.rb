@@ -32,12 +32,6 @@ module JoystickController
         end
       end
     end
-
-    def poll
-      while true
-        update
-      end
-    end
   end
 
 end
