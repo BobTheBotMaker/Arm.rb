@@ -17,6 +17,10 @@ class PollingServoController
     end
   end
 
+  def move(servo, position)
+    @servo_controller.move_to(servo, position)
+  end
+
   def disengage_servo(servo)
     @servo_controller.disengage_servo(servo)
     while @servo_controller.engaged?(servo)
