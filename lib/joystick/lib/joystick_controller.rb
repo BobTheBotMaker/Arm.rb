@@ -1,10 +1,15 @@
+require_relative '../../util/my_logger'
+
 module JoystickController
 
   class Controller
+    include Logging
+
     def initialize(joystick, controller_map)
       @joystick = joystick
       @controller_map = controller_map
       @event_callbacks = {}
+      @button_state = []
     end
 
     def on(event, action)
@@ -12,10 +17,15 @@ module JoystickController
     end
 
     def update_buttons
-      button_map = @controller_map[:buttons]
-      button_map.each do |button, name|
+      @joystick.update
+      @controller_map[:buttons].each do |button, name|
+        emit = true
         value = @joystick.button(button)
-        if @event_callbacks.has_key?(name)
+        if value == 0 && @button_state[button] == 0
+          emit = false
+        end
+        @button_state[button] = value
+        if emit && @event_callbacks.has_key?(name)
           @event_callbacks[name].call({button: name, value: value})
         end
       end
