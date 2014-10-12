@@ -3,6 +3,7 @@ class ServoArm
   include Logging
 
   def initialize(servo_controller, joystick_controller)
+    @keep_running = true
     @servo_controller = servo_controller
     @joystick_controller = joystick_controller
     setup_joints
