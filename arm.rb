@@ -16,6 +16,12 @@ puts "Found Joystick: #{joystick_hw.firmware_name}"
 joystick_controller = JoystickController::Controller.new(joystick_hw, JoystickController::PS3_CONTROLLER_MAP)
 
 servo_arm = ServoArm.new(polling_servo_controller, joystick_controller)
+
+Signal.trap('INT') do
+  puts 'Received Shutdown command'
+  servo_arm.shutdown
+end
+
 servo_arm.run
 
 #jnt = Joint.new(psc, 0, {position_min: 30, position_max: 220, acceleration: 180, ramping: true, type: :hitec_hs645mg})
