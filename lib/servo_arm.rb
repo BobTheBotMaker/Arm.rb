@@ -1,10 +1,10 @@
-require_relative 'joint/joint'
 
 class ServoArm
+  include Logging
+
   def initialize(servo_controller, joystick_controller)
     @servo_controller = servo_controller
     @joystick_controller = joystick_controller
-    @joint_opts = {position_min: 30, position_max: 220, acceleration: 180, ramping: true, type: :hitec_hs645mg}
     setup_joints
     setup_joystick
   end
