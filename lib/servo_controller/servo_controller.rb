@@ -39,11 +39,13 @@ class ServoController
   end
 
   def initialize_servo(servo, options)
+    # Set the type first, then override all the things.
+    @controller.advanced_servos[servo].type = options[:type]
     set_acceleration(servo, options[:acceleration])
     @controller.advanced_servos[servo].position_max = options[:position_max]
     @controller.advanced_servos[servo].position_min = options[:position_min]
     @controller.advanced_servos[servo].speed_ramping = options[:ramping]
-    @controller.advanced_servos[servo].type = options[:type]
+    @controller.advanced_servos[servo].position = options[:initial_position]
     engage_servo(servo)
   end
 
@@ -63,7 +65,11 @@ class ServoController
   end
 
   def move_to(servo, position)
-    @controller.advanced_servos[servo].position = position
+    begin
+      @controller.advanced_servos[servo].position = position
+    rescue Phidgets::Error::InvalidArg => e
+      logger.info "Invalid move on Servo #{servo}: #{e}"
+    end
   end
 
   def set_acceleration(servo, acceleration)
