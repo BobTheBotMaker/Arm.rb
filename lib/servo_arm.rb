@@ -27,29 +27,6 @@ class ServoArm
   end
 
   def grip(val)
-    val[:value] > 0 ? @gripper.move(170) : @gripper.move(30)
-  end
-
-  def in_dead_zone?(position)
-    position.between?(-400, 2500)
-  end
-
-  def map(x)
-    in_min = -32768.to_f
-    in_max = 32767.to_f
-    out_min = 30.to_f
-    out_max = 220.to_f
-
-    ((x.to_f - in_min) * (out_max - out_min) / (in_max - in_min) + out_min).round(2)
-  end
-
-  def mapped_position(position)
-    in_dead_zone?(position) ? 120 : map(position)
-  end
-
-  def scale(val)
-    direction = val < 0 ? -1 : 1
-    (direction)*9.5*Math.log10(direction * val+1)
   end
 
   def run
