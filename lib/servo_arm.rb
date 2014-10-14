@@ -22,7 +22,7 @@ class ServoArm
   end
 
   def update_servo_positions(joystick_data)
-    @shoulder_x.move(mapped_position(joystick_data[:x]))
+    @shoulder_x.move(joystick_data[:x].map(30,220).position)
     #@shoulder_y.move(map(joystick_data[:y]))
   end
 
