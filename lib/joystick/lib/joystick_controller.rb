@@ -35,13 +35,14 @@ module JoystickController
       @joystick.update
       sticks = @controller_map[:joysticks]
       sticks.each do | stick, axes |
-        x = @joystick.axis(axes[:x])
-        y = @joystick.axis(axes[:y])
+        x = JoystickPosition.new(@joystick.axis(axes[:x]))
+        y = JoystickPosition.new(@joystick.axis(axes[:y]))
         if @event_callbacks.has_key?(stick)
           @event_callbacks[stick].call({stick: stick, x: x, y: y})
         end
       end
     end
+
   end
 
 end
