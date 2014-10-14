@@ -27,6 +27,7 @@ class ServoArm
   end
 
   def grip(val)
+    val[:value] > 0 ? @gripper.close : @gripper.open
   end
 
   def run
