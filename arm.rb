@@ -2,6 +2,7 @@ require './lib/joystick/joystick'
 require './lib/servo_controller/servo_controller'
 require './lib/servo_controller/polling_servo_controller'
 require './lib/joint/joint'
+require './lib/joint/gripper'
 require './lib/servo_arm'
 require 'ruby-sdl-ffi'
 

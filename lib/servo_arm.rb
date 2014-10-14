@@ -11,9 +11,9 @@ class ServoArm
   end
 
   def setup_joints
-    @shoulder_x = Joint.new(@servo_controller, 0, {initial_position: 120, position_min: 30, position_max: 220, acceleration: 250, ramping: true, type: :hitec_hs645mg})
+    @shoulder_x = Joints::Joint.new(@servo_controller, 0, {initial_position: 120, position_min: 30, position_max: 220, acceleration: 250, ramping: true, type: :hitec_hs645mg})
     #@shoulder_y = Joint.new(@servo_controller, 1, {initial_position: 220, position_min: 30, position_max: 220, acceleration: 250, ramping: true, type: :hitec_hs645mg})
-    @gripper = Joint.new(@servo_controller, 5, {initial_position: 100, position_min: 30, position_max: 170, acceleration: 250, ramping: true, type: :default})
+    @gripper = Joints::Gripper.new(@servo_controller, 5, {initial_position: 100, position_min: 30, position_max: 170, acceleration: 250, ramping: true, type: :default})
   end
 
   def setup_joystick
