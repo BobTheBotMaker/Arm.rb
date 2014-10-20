@@ -7,8 +7,6 @@ module JoystickController
     JOYSTICK_IN_MIN = -32768
     JOYSTICK_IN_MAX = 32767
 
-    attr_reader :position
-
     def initialize(position)
       @position = position
     end
@@ -26,6 +24,31 @@ module JoystickController
 
     def in_dead_zone?(position)
       position.between?(JOYSTICK_DEAD_ZONE_LOWER, JOYSTICK_DEAD_ZONE_UPPER)
+    end
+
+    def ==(other)
+      @position == other
+    end
+
+    def coerce(other)
+      [self, other]
+    end
+
+    def to_s
+      "JoyStickPosition(#{@position})"
+    end
+
+    def unwrap
+      @position
+    end
+
+    def method_missing(sym, *args, &block)
+      args = args.map do |arg|
+        (arg.respond_to? :unwrap) ? arg.unwrap : arg
+      end
+
+      result = @position.send(sym, *args, &block)
+      JoystickPosition.new(result)
     end
   end
 
