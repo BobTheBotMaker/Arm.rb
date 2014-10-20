@@ -11,6 +11,7 @@ describe JoystickController do
 
   describe '#update_buttons' do
     it 'should register the select button down' do
+      @joystick.stubs(:update)
       @joystick.stubs(:button).with(0).returns(1).then.with(anything).returns(0)
       @receiver.expects(:select_button).with({button: :select, value: 1}).once
       @joystick_controller.on(:select, lambda {|val| @receiver.select_button(val)})
@@ -18,6 +19,7 @@ describe JoystickController do
     end
 
     it 'should register the select button up' do
+      @joystick.stubs(:update)
       @joystick.stubs(:button).with(0).returns(0).then.with(anything).returns(0)
       @receiver.expects(:select_button).with({button: :select, value: 0}).once
       @joystick_controller.on(:select, lambda {|val| @receiver.select_button(val)})
@@ -28,19 +30,25 @@ describe JoystickController do
 
   describe '#update_axes' do
     it 'should register a change on stick 0' do
+      @joystick.stubs(:update)
       @joystick.stubs(:axis).with(anything).returns(0)
       @joystick.stubs(:axis).with(0).returns(795)
       @joystick.stubs(:axis).with(1).returns(895)
-      @receiver.expects(:update_axis).with({stick: :j0, x: 795, y: 895}).once
+      x = JoystickController::JoystickPosition.new(795)
+      y = JoystickController::JoystickPosition.new(895)
+      @receiver.expects(:update_axis).with({stick: :j0, x: x, y: y}).once
       @joystick_controller.on(:j0, lambda {|val| @receiver.update_axis(val)})
       @joystick_controller.update_axes
     end
 
     it 'should register a change on stick 1' do
+      @joystick.stubs(:update)
       @joystick.stubs(:axis).with(anything).returns(0)
-      @joystick.stubs(:axis).with(0).returns(795)
-      @joystick.stubs(:axis).with(1).returns(895)
-      @receiver.expects(:update_axis).with({stick: :j1, x: 795, y: 895}).once
+      @joystick.stubs(:axis).with(2).returns(595)
+      @joystick.stubs(:axis).with(3).returns(495)
+      x = JoystickController::JoystickPosition.new(595)
+      y = JoystickController::JoystickPosition.new(495)
+      @receiver.expects(:update_axis).with({stick: :j1, x: x, y: y}).once
       @joystick_controller.on(:j1, lambda {|val| @receiver.update_axis(val)})
       @joystick_controller.update_axes
     end
