@@ -12,43 +12,21 @@ module JoystickController
     end
 
     def map(out_min, out_max)
-      pos = ((@position.to_f - JOYSTICK_IN_MIN) * (out_max - out_min) / (JOYSTICK_IN_MAX - JOYSTICK_IN_MIN) + out_min).round(2)
-      JoystickPosition.new(pos)
+      pos = in_dead_zone? ? 0 : @position
+      ((pos.to_f - JOYSTICK_IN_MIN) * (out_max - out_min) / (JOYSTICK_IN_MAX - JOYSTICK_IN_MIN) + out_min).round(2)
     end
 
-    def scale
+    def linear_scale
+      0.2 * map(-100,100)
+    end
+
+    def log_scale
       direction = @position < 0 ? -1 : 1
-      pos = (direction)*9.5*Math.log10(direction * @position+1)
-      JoystickPosition.new(pos)
+      (direction)*9.5*Math.log10(direction * map(-10,10)+1)
     end
 
-    def in_dead_zone?(position)
-      position.between?(JOYSTICK_DEAD_ZONE_LOWER, JOYSTICK_DEAD_ZONE_UPPER)
-    end
-
-    def ==(other)
-      @position == other
-    end
-
-    def coerce(other)
-      [self, other]
-    end
-
-    def to_s
-      "JoyStickPosition(#{@position})"
-    end
-
-    def unwrap
-      @position
-    end
-
-    def method_missing(sym, *args, &block)
-      args = args.map do |arg|
-        (arg.respond_to? :unwrap) ? arg.unwrap : arg
-      end
-
-      result = @position.send(sym, *args, &block)
-      JoystickPosition.new(result)
+    def in_dead_zone?
+      @position.between?(JOYSTICK_DEAD_ZONE_LOWER, JOYSTICK_DEAD_ZONE_UPPER)
     end
   end
 
