@@ -38,14 +38,14 @@ class ServoController
     end
   end
 
-  def initialize_servo(servo, options)
+  def initialize_servo(servo, config)
     # Set the type first, then override all the things.
-    @controller.advanced_servos[servo].type = options[:type]
-    set_acceleration(servo, options[:acceleration])
-    @controller.advanced_servos[servo].position_max = options[:position_max]
-    @controller.advanced_servos[servo].position_min = options[:position_min]
-    @controller.advanced_servos[servo].speed_ramping = options[:ramping]
-    @controller.advanced_servos[servo].position = options[:initial_position]
+    @controller.advanced_servos[servo].type = config.type
+    set_acceleration(servo, config.acceleration)
+    @controller.advanced_servos[servo].position_max = config.position_max
+    @controller.advanced_servos[servo].position_min = config.position_min
+    @controller.advanced_servos[servo].speed_ramping = config.ramping
+    @controller.advanced_servos[servo].position = config.initial_position
     engage_servo(servo)
   end
 
