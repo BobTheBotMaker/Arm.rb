@@ -1,6 +1,10 @@
+require_relative '../../util/my_logger'
+
 module JoystickController
 
   class JoystickPosition
+    include Logging
+
     JOYSTICK_DEAD_ZONE_UPPER = 2500
     JOYSTICK_DEAD_ZONE_LOWER = -400
 

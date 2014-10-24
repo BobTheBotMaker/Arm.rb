@@ -9,6 +9,7 @@ class NumberWrapper
   end
 
   def coerce(other)
+    puts "coercing #{self} to #{other}"
     [self, other]
   end
 
@@ -20,15 +21,11 @@ class NumberWrapper
     @number
   end
 
-  def method_missing2(sym, *args, &block)
-    puts "#{sym}, #{args}"
+  def method_missing(sym, *args, &block)
+    puts "#{self} is missing method #{sym}. Args #{args}"
 
     args = args.map do |arg|
-      if arg.respond_to? :unwrap
-        arg.unwrap
-      else
-        arg
-      end
+      (arg.respond_to? :unwrap) ? arg.unwrap : arg
     end
 
     var = @number.send(sym, *args, &block)
@@ -38,7 +35,7 @@ class NumberWrapper
 end
 
 foo = NumberWrapper.new(10)
-foo2 = NumberWrapper.new(10)
+foo2 = NumberWrapper.new(20)
 
 puts "#{foo} #{foo2}"
 
@@ -46,3 +43,9 @@ bar = foo + foo2
 
 puts "#{bar}"
 
+bar1 = foo + 10
+puts "#{bar1}"
+
+puts '--------------------------'
+bar2 = 15 + foo
+puts "#{bar2}"
