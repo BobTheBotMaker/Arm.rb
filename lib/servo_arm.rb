@@ -23,12 +23,22 @@ class ServoArm
     end
     @shoulder_x.init
 
-    #@gripper = Joints::Gripper.new(@servo_controller, 5, {initial_position: 100, position_min: 30, position_max: 170, acceleration: 250, ramping: true, type: :default})
+    @gripper = Joints::Gripper.new(@servo_controller)
+    @gripper.configure do |config|
+      config.port = 5
+      config.initial_position = 100
+      config.position_min = 30
+      config.position_max = 170
+      config.acceleration = 250
+      config.ramping = true
+      config.type = :default
+    end
+    @gripper.init
   end
 
   def setup_joystick
     @joystick_controller.on(:j1, lambda {|val| update_servo_positions(val)})
-    #@joystick_controller.on(:right2, lambda {|val| grip(val)})
+    @joystick_controller.on(:right2, lambda {|val| grip(val)})
   end
 
   def update_servo_positions(joystick_data)

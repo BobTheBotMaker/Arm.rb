@@ -1,46 +1,49 @@
+require 'ostruct'
+
 module Joints
   class Gripper
     include Logging
 
-    def initialize(controller, port, options)
-      @port = port
-      @options = options
+    def initialize(controller)
+      @config = OpenStruct.new
       @controller = controller
-      @current_position = options[:initial_position]
-
-      setup_servo
-      logger.info "Created Gripper with Servo Port #{port}"
     end
 
-    def setup_servo
-      @controller.initialize_servo(@port, @options)
+    def configure
+      yield @config
+    end
+
+    def init
+      logger.info "Creating Gripper with Servo Port #{@config.port}"
+      @controller.initialize_servo(@config.port, @config)
+      @current_position = @config.initial_position
     end
 
     def go_to(position)
       delta = (position - @current_position).abs
       if delta > 1
-        logger.info "Commanded #{@port} to move to position #{position}, current position #{@current_position}"
-        @controller.move(@port, position)
-        @current_position = @controller.get_position(@port)
+        logger.info "Commanded #{@config.port} to move to position #{position}, current position #{@current_position}"
+        @controller.move(@config.port, position)
+        @current_position = @controller.get_position(@config.port)
       end
     end
 
     def open
       logger.info 'Gripper Open'
-      go_to(@options[:position_min])
+      go_to(@config.position_min)
     end
 
     def close
       logger.info 'Gripper Close'
-      go_to(@options[:position_max])
+      go_to(@config.position_max)
     end
 
     def position
-      @controller.get_position(@port)
+      @controller.get_position(@config.port)
     end
 
     def disengage
-      @controller.disengage_servo(@port)
+      @controller.disengage_servo(@config.port)
     end
 
   end
