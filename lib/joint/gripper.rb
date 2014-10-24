@@ -15,7 +15,7 @@ module Joints
 
     def init
       logger.info "Creating Gripper with Servo Port #{@config.port}"
-      @controller.initialize_servo(@config.port, @config)
+      @controller.initialize_servo(@config)
     end
 
     def go_to(position)

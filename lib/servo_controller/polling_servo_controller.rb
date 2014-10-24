@@ -6,8 +6,8 @@ class PollingServoController
     @servo_controller = servo_controller
   end
 
-  def initialize_servo(port, config)
-    @servo_controller.initialize_servo(port, config)
+  def initialize_servo(config)
+    @servo_controller.initialize_servo(config)
   end
 
   def move_to(servo, position)

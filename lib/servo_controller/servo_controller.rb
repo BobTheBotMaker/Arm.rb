@@ -38,15 +38,15 @@ class ServoController
     end
   end
 
-  def initialize_servo(servo, config)
+  def initialize_servo(config)
     # Set the type first, then override all the things.
-    @controller.advanced_servos[servo].type = config.type
-    set_acceleration(servo, config.acceleration)
-    @controller.advanced_servos[servo].position_max = config.position_max
-    @controller.advanced_servos[servo].position_min = config.position_min
-    @controller.advanced_servos[servo].speed_ramping = config.ramping
-    @controller.advanced_servos[servo].position = config.initial_position
-    engage_servo(servo)
+    @controller.advanced_servos[config.port].type = config.type
+    set_acceleration(config.port, config.acceleration)
+    @controller.advanced_servos[config.port].position_max = config.position_max
+    @controller.advanced_servos[config.port].position_min = config.position_min
+    @controller.advanced_servos[config.port].speed_ramping = config.ramping
+    @controller.advanced_servos[config.port].position = config.initial_position
+    engage_servo(config.port)
   end
 
   def get_position(servo)
