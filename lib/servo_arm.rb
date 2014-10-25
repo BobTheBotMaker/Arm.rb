@@ -35,8 +35,9 @@ class ServoArm
     end
     @elbow.init
 
+    @gripper_servo = @servo_controller.get_polling_port(5)
+    @gripper = Joints::Gripper.new(@gripper_servo)
     @gripper.configure do |config|
-      config.port = 5
       config.initial_position = 100
       config.position_min = 30
       config.position_max = 170
@@ -53,9 +54,8 @@ class ServoArm
   end
 
   def update_servo_positions(joystick_data)
-    pos = joystick_data[:x].linear_scale
-    logger.info "Original #{joystick_data[:x]} Scaled #{pos}"
-    @shoulder_x.move(pos)
+    @shoulder_x.move(joystick_data[:x].linear_scale)
+    @elbow.move(joystick_data[:y].linear_scale)
     #@shoulder_y.move(map(joystick_data[:y]))
   end
 
