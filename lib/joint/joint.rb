@@ -29,17 +29,18 @@ module Joints
     def go_to(position)
       delta = (position - @current_position).abs
       if delta.to_f > 1.0
-        logger.info "#{self.class} #{@config.port} moving to #{position}, from #{@current_position}, delta #{delta}"
+        logger.info "#{@config.name} moving to #{position}, from #{@current_position}, delta #{delta}"
         @controller.move(position)
         @current_position = @controller.get_position
       end
     end
 
     def move(increment)
-      logger.info "#{self.class} position #{@current_position}"
-      @current_position += increment
-      logger.info "#{self.class.name} moving #{increment} to #{@current_position}"
-      @controller.move(@current_position)
+      if increment != 0
+        @current_position += increment
+        logger.info "#{@config.name} moving #{increment} to #{@current_position}"
+        @controller.move(@current_position)
+      end
     end
 
     def position
