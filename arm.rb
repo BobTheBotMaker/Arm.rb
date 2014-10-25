@@ -18,6 +18,7 @@ puts "Found Joystick: #{joystick_hw.firmware_name}"
 
 
 servo_arm = ServoArm.new(servo_controller, joystick_controller)
+servo_arm.init
 
 Signal.trap('INT') do
   puts 'Received Shutdown command'

@@ -6,6 +6,9 @@ class ServoArm
     @keep_running = true
     @servo_controller = servo_controller
     @joystick_controller = joystick_controller
+  end
+
+  def init
     setup_joints
     setup_joystick
   end
