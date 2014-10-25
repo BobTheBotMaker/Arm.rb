@@ -37,12 +37,18 @@ module Joints
 
     def move(increment)
       if increment != 0
-        @current_position += increment
-        logger.info "#{@config.name} moving #{increment} to #{@current_position}"
-        @controller.move(@current_position)
+        pos = @current_position + increment
+        if check_position?(pos)
+          @current_position = pos
+          logger.info "#{@config.name} moving #{increment} to #{@current_position}"
+          @controller.move(@current_position)
+        end
       end
     end
 
+    def check_position?(position)
+      position.between?(@config.position_min, @config.position_max)
+    end
     def position
       @controller.get_position
     end
