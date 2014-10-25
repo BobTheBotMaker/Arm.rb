@@ -1,6 +1,6 @@
 require_relative 'servo_controller'
 
-class PollingServoController
+class PollingServoPort
 
   def initialize(servo_controller)
     @servo_controller = servo_controller

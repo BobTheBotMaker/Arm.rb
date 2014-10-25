@@ -38,54 +38,12 @@ class ServoController
     end
   end
 
-  def initialize_servo(config)
-    # Set the type first, then override all the things.
-    @controller.advanced_servos[config.port].type = config.type
-    set_acceleration(config.port, config.acceleration)
-    @controller.advanced_servos[config.port].position_max = config.position_max
-    @controller.advanced_servos[config.port].position_min = config.position_min
-    @controller.advanced_servos[config.port].speed_ramping = config.ramping
-    @controller.advanced_servos[config.port].position = config.initial_position
-    engage_servo(config.port)
+  def get_raw_port(port)
+    ServoPort.new(port, self)
   end
 
-  def get_position(servo)
-    position = -1
-    while position < 0
-      begin
-        position = @controller.advanced_servos[servo].position
-      rescue Phidgets::Error::UnknownVal => e
-        logger.info "Waiting on Servo #{servo} position"
-        sleep 1
-        next
-      end
-    end
-    logger.info "Server #{servo} position is #{position}"
-    position
-  end
-
-  def move_to(servo, position)
-    begin
-      @controller.advanced_servos[servo].position = position
-    rescue Phidgets::Error::InvalidArg => e
-      logger.info "Invalid move on Servo #{servo}: #{e}"
-    end
-  end
-
-  def set_acceleration(servo, acceleration)
-    @controller.advanced_servos[servo].acceleration = acceleration
-  end
-
-  def engaged?(servo)
-    @controller.advanced_servos[servo].engaged
-  end
-
-  def engage_servo(servo)
-    @controller.advanced_servos[servo].engaged = true
-  end
-
-  def disengage_servo(servo)
-    @controller.advanced_servos[servo].engaged = false
+  def get_polling_port(port)
+    PollingServoPort.new(get_raw_port(port))
   end
 
 end
