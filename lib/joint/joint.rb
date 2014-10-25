@@ -6,11 +6,18 @@ module Joints
 
     def initialize(controller)
       @config = OpenStruct.new
+      @config.initial_position = 120
+      @config.position_min = 30
+      @config.position_max = 220
+      @config.acceleration = 250
+      @config.ramping = true
+      @config.type = :default
+
       @controller = controller
     end
 
     def configure
-      yield @config
+      yield @config if block_given?
     end
 
     def init
