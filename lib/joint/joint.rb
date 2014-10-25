@@ -22,25 +22,25 @@ module Joints
     def go_to(position)
       delta = (position - @current_position).abs
       if delta.to_f > 1.0
-        logger.info "Port #{@config.port} moving to #{position}, from #{@current_position}, delta #{delta}"
-        @controller.move(@config.port, position)
-        @current_position = @controller.get_position(@config.port)
+        logger.info "#{self.class} #{@config.port} moving to #{position}, from #{@current_position}, delta #{delta}"
+        @controller.move(position)
+        @current_position = @controller.get_position
       end
     end
 
     def move(increment)
-      logger.info "Port #{@config.port} position #{@current_position}"
+      logger.info "#{self.class} position #{@current_position}"
       @current_position += increment
-      logger.info "Port #{@config.port} moving #{increment} to #{@current_position}"
-      @controller.move(@config.port, @current_position)
+      logger.info "#{self.class.name} moving #{increment} to #{@current_position}"
+      @controller.move(@current_position)
     end
 
     def position
-      @controller.get_position(@config.port)
+      @controller.get_position
     end
 
     def disengage
-      @controller.disengage_servo(@config.port)
+      @controller.disengage_servo
     end
 
   end

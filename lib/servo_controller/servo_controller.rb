@@ -5,7 +5,12 @@ require_relative '../util/my_logger'
 class ServoController
   include Logging
 
+  attr_accessor :controller
+
   def initialize
+  end
+
+  def init
     @controller = Phidgets::AdvancedServo.new
     setup_error_handler
     do_attach

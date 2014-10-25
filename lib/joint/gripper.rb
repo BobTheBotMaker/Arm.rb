@@ -19,8 +19,8 @@ module Joints
     end
 
     def go_to(position)
-      logger.info "Commanded #{@config.port} to move to position #{position}, current position #{@current_position}"
-      @controller.move(@config.port, position)
+      logger.info "Commanded #{@config.port} to move to position #{position}"
+      @controller.move(position)
     end
 
     def open
@@ -34,7 +34,7 @@ module Joints
     end
 
     def disengage
-      @controller.disengage_servo(@config.port)
+      @controller.disengage_servo
     end
 
   end

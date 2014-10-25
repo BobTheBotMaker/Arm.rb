@@ -11,9 +11,9 @@ class ServoArm
   end
 
   def setup_joints
-    @shoulder_x = Joints::Joint.new(@servo_controller)
+    @shoulder_x_servo = @servo_controller.get_polling_port(0)
+    @shoulder_x = Joints::Joint.new(@shoulder_x_servo)
     @shoulder_x.configure do |config|
-      config.port = 0
       config.initial_position = 120
       config.position_min = 30
       config.position_max = 220
