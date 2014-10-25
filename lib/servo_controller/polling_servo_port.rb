@@ -2,28 +2,28 @@ require_relative 'servo_controller'
 
 class PollingServoPort
 
-  def initialize(servo_controller)
-    @servo_controller = servo_controller
+  def initialize(raw_servo_port)
+    @servo_port = raw_servo_port
   end
 
   def initialize_servo(config)
-    @servo_controller.initialize_servo(config)
+    @servo_port.init_port(config)
   end
 
-  def move_to(servo, position)
-    @servo_controller.move_to(servo, position)
-    until within_tolerance(position, get_position(servo), 0.01)
+  def move_to(position)
+    @servo_port.move_to(position)
+    until within_tolerance(position, get_position, 0.01)
       sleep 1
     end
   end
 
-  def move(servo, position)
-    @servo_controller.move_to(servo, position)
+  def move(position)
+    @servo_port.move_to(position)
   end
 
-  def disengage_servo(servo)
-    @servo_controller.disengage_servo(servo)
-    while @servo_controller.engaged?(servo)
+  def disengage_servo
+    @servo_port.disengage_servo
+    while @servo_port.engaged?
       sleep 1
     end
   end
@@ -33,8 +33,8 @@ class PollingServoPort
     difference.abs < tolerance
   end
 
-  def get_position(servo)
-    @servo_controller.get_position(servo)
+  def get_position
+    @servo_port.get_position
   end
 
 end
