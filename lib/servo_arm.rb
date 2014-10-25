@@ -74,6 +74,7 @@ class ServoArm
   def shutdown
     @keep_running = false
     @shoulder_x.disengage
+    @elbow.disengage
     #@shoulder_y.disengage
     @gripper.disengage
   end
