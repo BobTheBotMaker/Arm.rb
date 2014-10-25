@@ -23,7 +23,18 @@ class ServoArm
     end
     @shoulder_x.init
 
-    @gripper = Joints::Gripper.new(@servo_controller)
+    @elbow_servo = @servo_controller.get_polling_port(2)
+    @elbow = Joints::Joint.new(@elbow_servo)
+    @elbow.configure do |config|
+      config.initial_position = 120
+      config.position_min = 30
+      config.position_max = 220
+      config.acceleration = 250
+      config.ramping = true
+      config.type = :hitec_hs645mg
+    end
+    @elbow.init
+
     @gripper.configure do |config|
       config.port = 5
       config.initial_position = 100
