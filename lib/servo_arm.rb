@@ -31,9 +31,12 @@ class ServoArm
   end
 
   def update_servo_positions(joystick_data)
-    @shoulder_x.move(joystick_data[:x].linear_scale)
-    @elbow.move(joystick_data[:y].linear_scale)
-    #@shoulder_y.move(map(joystick_data[:y]))
+    case joystick_data[:stick]
+      when :j1
+        @shoulder_x.move(joystick_data[:x].linear_scale)
+      when :j0
+        @elbow.move(joystick_data[:y].linear_scale)
+    end
   end
 
   def grip(val)
