@@ -25,17 +25,17 @@ module Joints
     end
 
     def go_to(position)
-      logger.info "Commanded #{@config.port} to move to position #{position}"
+      logger.info "Moving Gripper #{@config.name} to position #{position}"
       @controller.move(position)
     end
 
     def open
-      logger.info 'Gripper Open'
+      logger.info "Gripper #{@config.name} Open"
       go_to(@config.position_min)
     end
 
     def close
-      logger.info 'Gripper Close'
+      logger.info "Gripper #{@config.name} Close"
       go_to(@config.position_max)
     end
 

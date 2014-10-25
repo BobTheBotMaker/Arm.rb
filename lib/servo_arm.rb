@@ -16,14 +16,24 @@ class ServoArm
   def setup_joints
     @shoulder_x_servo = @servo_controller.get_polling_port(0)
     @shoulder_x = Joints::Joint.new(@shoulder_x_servo)
+    @shoulder_x.configure do |config|
+      config.name = 'Shoulder X'
+    end
     @shoulder_x.init
 
     @elbow_servo = @servo_controller.get_polling_port(2)
     @elbow = Joints::Joint.new(@elbow_servo)
+    @elbow.configure do |config|
+      config.name = 'Elbow'
+    end
+
     @elbow.init
 
     @gripper_servo = @servo_controller.get_polling_port(5)
     @gripper = Joints::Gripper.new(@gripper_servo)
+    @gripper.configure do |config|
+      config.name = 'Gripper 1'
+    end
     @gripper.init
   end
 

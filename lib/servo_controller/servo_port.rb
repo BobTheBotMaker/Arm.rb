@@ -9,8 +9,8 @@ class ServoPort
   end
 
   def init_port(config)
+    logger.info "Initializing servo port #{@port}"
     # Set the type first, then override all the things.
-    puts "#{@controller}"
     @controller.controller.advanced_servos[@port].type = config.type
     set_acceleration(config.acceleration)
     @controller.controller.advanced_servos[@port].position_max = config.position_max

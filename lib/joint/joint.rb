@@ -21,7 +21,7 @@ module Joints
     end
 
     def init
-      logger.info "Creating Joint with Servo Port #{@config.port}"
+      logger.info "Creating #{@config.name}"
       @controller.initialize_servo(@config)
       @current_position = @config.initial_position
     end
