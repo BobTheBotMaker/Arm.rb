@@ -50,6 +50,7 @@ class ServoArm
 
   def setup_joystick
     @joystick_controller.on(:j1, lambda {|val| update_servo_positions(val)})
+    @joystick_controller.on(:j0, lambda {|val| update_servo_positions(val)})
     @joystick_controller.on(:right2, lambda {|val| grip(val)})
   end
 
@@ -67,7 +68,7 @@ class ServoArm
     while @keep_running
       @joystick_controller.update_axes
       @joystick_controller.update_buttons
-      sleep 0.5
+      sleep 0.1
     end
   end
 
